@@ -1,7 +1,9 @@
 .header{
-  margin: auto 0;
   height: 10vh;
   width: 100%;
+  display: flex;
   background-color: azure;
-  position: fixed;
+  justify-content: center;
+  padding: 2rem;
+  margin-bottom: 25px;
 }
