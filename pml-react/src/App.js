@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, } from 'react-router-dom';
 
-import Header from './Presentational/organisms/header';
-import TopPage from './Presentational/pages/TopPage/TopPage';
-import PostPage from './Presentational/pages/PostPage/PostPage';
+import Header from './Post/Components/organisms/header';
+import TopPage from './Post/Components/pages/TopPage/TopPage';
+import PostPage from './Post/Components/pages/PostPage/PostPage';
 import './App.scss';
 
 const App = () => (

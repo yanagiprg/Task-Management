@@ -1,5 +1,5 @@
 import React from 'react';
-import ViewPost from '../atom/post-data.component';
+import ViewPost from './post-update.component';
 
 class PostList extends React.Component {
   render(){
@@ -7,7 +7,11 @@ class PostList extends React.Component {
       <div className='postlist'>
         {this.props.postData.map((data) => {
           return(
-            <ViewPost data={ data } key={data.id} />
+            <ViewPost 
+              data={ data } 
+              key={data.id} 
+              onUpdate={this.props.updatePost} 
+            />
           )
         })}
       </div>
