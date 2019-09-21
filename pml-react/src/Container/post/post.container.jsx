@@ -1,14 +1,15 @@
 import React from 'react';
 import axios from 'axios';
+import update from 'react-addons-update';
 
-import PostsContainer from '../../Presentational/molecules/posts-container';
+import PostList from '../../Presentational/molecules/post-list.component';
+import PostForm from '../../Presentational/molecules/post-form.component';
 
-class PostIndex extends React.Component {
+class PostContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: [],
-      content: [],
+      posts: [],
     }
   };
 
@@ -16,21 +17,32 @@ class PostIndex extends React.Component {
     axios.get('http://localhost:3001/posts')
     .then((results) => {
       console.log(results);
-      this.setState({title: results.data, content: results.data})
+      this.setState({posts: results.data})
     })
     .catch((data) => {
       console.log(data);
     })
   };
-  
+
+  createPost = title => {
+    axios.post('http://localhost:3001/posts', {title: title})
+    .then((response) => {
+      const newData = update(this.state.posts, {$push:[response.data]})
+      this.setState({posts: newData})
+    })
+    .catch((data) => {
+      console.log(data)
+    })
+  };
 
   render(){
     return (
-      <div className='post-index'>
-        <PostsContainer postData={ this.state.title } />
+      <div className='post-container'>
+        <PostList postData={ this.state.posts } />
+        <PostForm createPost={this.createPost}/>
       </div>
     )
   };
 };
 
-export default PostIndex;
+export default PostContainer;

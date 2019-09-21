@@ -1,11 +1,11 @@
 import React from 'react';
 
 import './PostPage.scss';
-import PostIndex from '../../../Container/post/post.container';
+import PostContainer from '../../../Container/post/post.container';
 
 const PostPage = () => (
   <div className='post-page'>
-    <PostIndex />
+    <PostContainer />
   </div>
 );
 

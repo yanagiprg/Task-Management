@@ -1,7 +1,7 @@
 import React from 'react';
-import ViewPost from '../atom/post-view';
+import ViewPost from '../atom/post-data.component';
 
-class PostsContainer extends React.Component {
+class PostList extends React.Component {
   render(){
     return(
       <div className='postlist'>
@@ -15,4 +15,4 @@ class PostsContainer extends React.Component {
   }
 };
 
-export default PostsContainer;
+export default PostList;
