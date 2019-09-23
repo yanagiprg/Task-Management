@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {Button} from 'react-bootstrap';
 
 class ViewPost extends React.Component {
@@ -10,20 +9,23 @@ class ViewPost extends React.Component {
     }
   }
 
+  handleInput = (e) => {
+    this.setState({updateTitle: e.target.value})
+  }
 
   handleUpdate = () => {
     this.props.onUpdate(this.props.data.id, this.state.updateTitle)
   }
 
-  handleInput = (e) => {
-    this.setState({updateTitle: e.target.value})
+  handleDelete = () => {
+    this.props.onDelete(this.props.data.id)
   }
-
 
   render() {
     return(
       <div>
-        <span>{this.props.data.title}</span>
+        <h4>{this.props.data.content}  </h4>
+        <span>:{this.props.data.title}</span>
         <span>
           <input 
             type="text" 
@@ -34,7 +36,9 @@ class ViewPost extends React.Component {
         <span>
           <Button type="submit" onClick={this.handleUpdate}>更新！</Button>
         </span>
-        {/* <p>{this.props.data.content}</p> */}
+        <span>
+          <Button onClick={this.handleDelete}>削除ッッ！</Button>
+        </span>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import ViewPost from './post-update.component';
 
 class PostList extends React.Component {
@@ -10,7 +11,8 @@ class PostList extends React.Component {
             <ViewPost 
               data={ data } 
               key={data.id} 
-              onUpdate={this.props.updatePost} 
+              onUpdate={this.props.updatePost}
+              onDelete={this.props.deletePost} 
             />
           )
         })}

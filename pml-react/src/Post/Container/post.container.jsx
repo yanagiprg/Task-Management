@@ -44,11 +44,21 @@ class PostContainer extends React.Component {
     });
   };
 
+  deletePost = id => {
+    axios.delete(`http://localhost:3001/posts/${id}`)
+    .then((response) => {
+      const postIndex = this.state.posts.findIndex(x => x.id ===id);
+      const deletedPosts = update(this.state.posts, {$splice: [[postIndex, 1]]});
+      this.setState({posts: deletedPosts});
+      console.log('set');
+    }).catch((data) => {console.log(data)})
+  }
+
   render(){
     return (
       <div className='post-container'>
-        <PostList postData={ this.state.posts } updatePost={this.updatePost} />
-        <PostForm createPost={this.createPost}/>
+        <PostList postData={ this.state.posts } updatePost={this.updatePost} deletePost={this.deletePost} />
+        <PostForm createPost={this.createPost} />
       </div>
     )
   };
